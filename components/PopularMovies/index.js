@@ -16,9 +16,10 @@ function PopularMovies() {
       </button>
       <div className={styles.movieListContainer}>
         {response.map((movie) => (
-          <div key={movie.id} className={styles.moviePreviewContainer}> 
-            <Image src={getMovieCoverPath(movie.poster_path)} width={220} height={146} alt={movie.title} className={styles.movieCover} layout="fill" objectFit="cover" className={styles.coverImage} />
+          <div key={movie.id} className={styles.moviePreviewContainer}>
+            <Image src={getMovieCoverPath(movie.poster_path)} width={220} height={146} alt={movie.title} className={styles.movieCover} layout="fill" objectFit="cover" />
             <h3 className={styles.movieTitle}>{movie.title}</h3>
+            <div className={styles.overlay} /> 
           </div>
         ))}
       </div>

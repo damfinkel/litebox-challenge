@@ -1,12 +1,12 @@
 @import '../../styles/colors.scss';
 
 .nav {
-  background-color: #000000;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   padding: 35px 120px;
+  position: fixed;
 }
 
 .logoContainer {
