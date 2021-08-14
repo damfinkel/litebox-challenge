@@ -1,0 +1,73 @@
+@import '../../styles/colors.scss';
+
+.nav {
+  background-color: #000000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 35px 120px;
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+}
+
+.addMovieButton {
+  color: white;
+  font-size: 18px;
+  line-height: 18px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-left: 64px;
+  display: flex;
+
+  &:before {
+    content: "";
+    background: url("../../public/assets/ic-add.svg") center no-repeat;
+    height: 14px;
+    width: 14px;
+    margin-right: 12px;
+  }
+}
+
+.navButtonsContainer {
+  display: flex;
+  align-items: center;
+
+  *:not(:last-child) {
+    margin-right: 40px;
+  }
+}
+
+.sidebarButton {
+  height: 40px;
+  width: 27px;
+  background: url("../../public/assets/ic-menu.svg") center no-repeat;
+}
+
+.notificationsButton {
+  position: relative;
+  height: 40px;
+  width: 26px;
+  background: url("../../public/assets/ic-bell.svg") center no-repeat;
+
+  &:after {
+    position: absolute;
+    content: "";
+    background-color: $aqua;
+    height: 9px;
+    width: 9px;
+    border-radius: 4.5px;
+    top: 7px;
+    right: 0;
+  }
+}
+
+.profileButton {
+  height: 40px;
+  width: 40px;
+  background: url("../../public/assets/ic-default-avatar.svg") center no-repeat;
+  border-radius: 20px;
+}
