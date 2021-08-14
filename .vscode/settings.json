@@ -1,0 +1,12 @@
+{
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "editor.formatOnSave": true,
+  "typescript.validate.enable": false,
+  "javascript.format.enable": false,
+  "prettier.enable": false,
+  "eslint.format.enable": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "files.insertFinalNewline": true
+}
