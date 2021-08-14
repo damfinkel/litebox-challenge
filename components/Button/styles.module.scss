@@ -1,0 +1,22 @@
+.button {
+  color: white;
+  width: 248px;
+  height: 56px;
+  text-transform: uppercase;
+  line-height: 22px;
+  font-size: 18px;
+  letter-spacing: 4px;
+  font-weight: 400;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.primary {
+  background-color: black;
+}
+
+.secondary {
+  background-color: transparent;
+  border: 1px solid white;
+}
