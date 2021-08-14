@@ -1,0 +1,77 @@
+.popularMoviesContainer {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.dropdownTitle {
+  font-size: 18px;
+  line-height: 18px;
+  letter-spacing: 4px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+
+  &::after {
+    content: "";
+    background: url('../../public/assets/ic-arrow-down.svg');
+    margin-left: 11px;
+    width: 11px;
+    height: 10px;
+  }
+}
+
+.movieListContainer {
+  display: flex;
+  flex-direction: column;
+
+  :not(:last-child) {
+    margin-bottom: 20px;
+  }
+}
+
+.moviePreviewContainer {
+  position: relative;
+  width: 220px;
+  height: 146px;
+  border-radius: 4px;
+  overflow: hidden;
+  padding: 14px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 22.78%, #000000 122.69%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  &::after {
+    content: "";
+    position: absolute;
+    height: 38px;
+    width: 38px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-20px, -20px);
+    background: url('../../public/assets/ic-play-button.svg') center no-repeat;
+    border: 1px solid white;
+    border-radius: 20px;
+  }
+}
+
+.movieCover {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.coverImage {
+  z-index: -1;
+}
+
+.movieTitle {
+  color: white;
+  font-size: 18px;
+  line-height: 16px;
+  letter-spacing: 4px;
+  text-align: center;
+}
