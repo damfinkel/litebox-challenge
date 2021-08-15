@@ -7,10 +7,19 @@ import Image from 'next/image';
 import { POPULAR_MOVIES, POPULAR_MOVIES2 } from './utils';
 import Sidebar from '../components/Sidebar';
 import { useState } from 'react';
+import Modal from 'react-modal';
+import AddMovie from '../components/AddMovie';
 
 export default function Home({ coverMovie, popularList }) {
   const getMovieCoverPath = (fileName) => `https://image.tmdb.org/t/p/original${fileName}`;
   const [showSidebar, setShowSidebar] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const closeModal = () => setModalIsOpen(false);
+
+  if(typeof window === 'undefined') {
+    Modal.setAppElement('#root');
+  }
   
   return (
     <div className={styles.container}>
@@ -21,7 +30,7 @@ export default function Home({ coverMovie, popularList }) {
       </Head>
       <div className={styles.overlay} />
       <Sidebar open={showSidebar} onOpenChange={setShowSidebar} />
-      <Nav onOpenSidebar={setShowSidebar} />
+      <Nav onOpenSidebar={setShowSidebar} onAddMovie={() => setModalIsOpen(true)} />
       <main className={styles.main}>
         <Image src={getMovieCoverPath(coverMovie?.poster_path)} alt={coverMovie?.title} layout="fill" objectFit="cover" className={styles.coverImage} />
         <div className={styles.mainContent}>
@@ -38,6 +47,16 @@ export default function Home({ coverMovie, popularList }) {
           <PopularMovies />
         </div>
       </main>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        onAfterClose={closeModal}
+        className={styles.modalContainer}
+        overlayClassName={styles.modalOverlay}
+        shouldCloseOnOverlayClick
+      >
+        <AddMovie onClose={closeModal} />
+      </Modal>
     </div>
   )
 }

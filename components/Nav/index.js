@@ -2,12 +2,12 @@ import Link from 'next/link'
 import Logo from '../../public/assets/ic-liteflix.svg';
 import styles from './styles.module.scss'
 
-function Nav({ onOpenSidebar }) {
+function Nav({ onOpenSidebar, onAddMovie }) {
   return (
     <nav className={styles.nav}>
       <div className={styles.logoContainer}>
         <Logo />
-        <Link href="/movie/new"><a className={styles.addMovieButton}>Agregar Película</a></Link>
+        <button type="button" className={styles.addMovieButton} onClick={onAddMovie}>Agregar Película</button>
       </div>
       <div className={styles.navButtonsContainer}>
         <button type="button" className={styles.sidebarButton} onClick={() => onOpenSidebar(prev => !prev)} />

@@ -22,3 +22,13 @@
   background-color: transparent;
   border: 1px solid white;
 }
+
+.terciary {
+  background-color: white;
+  color: $mine-shaft;
+  transition: background-color 150ms ease-in-out;
+
+  &:disabled {
+    background-color: #737272;
+  }
+}
