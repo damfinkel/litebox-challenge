@@ -1,3 +1,5 @@
+@import "../../styles/colors.scss";
+
 .popularMoviesContainer {
   display: flex;
   flex-direction: column;
@@ -60,11 +62,39 @@
     width: 38px;
     top: 50%;
     left: 50%;
-    transform: translate(-20px, -20px);
-    background: url('../../public/assets/ic-play-button.svg') center no-repeat;
-    border: 1px solid white;
-    border-radius: 20px;
+    transform: translate3d(-20px, -20px, 0);
+    background: url('../../public/assets/ic-play-button.svg') center/cover no-repeat;
   }
+
+  &:hover {
+    .movieTitle {
+      opacity: 0;
+      transform: translate3d(0, 10px, 0);
+      transition: transform 250ms ease-in, opacity 250ms ease-in;
+    }
+
+    &::after {
+      opacity: 0;
+      transform: translate3d(-20px, -10px, 0);
+      transition: transform 250ms ease-in, opacity 250ms ease-in;
+    }
+
+    .hoveredInformation {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+      transition: transform 250ms ease-in, opacity 250ms ease-in;
+    }
+  }
+}
+
+.movieTitle, .moviePreviewContainer::after {
+  transition: transform 250ms ease-in 250ms, opacity 250ms ease-in 250ms;
+}
+
+.hoveredInformation {
+  transition: transform 250ms ease-in, opacity 250ms ease-in;
+  opacity: 0;
+  transform: translate3d(0, 10px, 0);
 }
 
 .movieCover {
@@ -82,4 +112,83 @@
   letter-spacing: 4px;
   text-align: center;
   z-index: 1;
+}
+
+.hoveredInformation {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  grid-template-areas: 
+    "title title"
+    "rating year";
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, auto);
+  row-gap: 20px;
+  justify-content: space-between;
+  padding: 16px;
+  z-index: 1;
+}
+
+.playButton {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  line-height: 16px;
+  grid-area: title;
+
+  &:hover {
+    .playIcon {
+      circle {
+        stroke: $mine-shaft;
+        fill: $aqua;
+        fill-opacity: 1;
+      }
+
+      path {
+        fill: $mine-shaft;
+        stroke: transparent;
+      }
+    } 
+  }
+}
+
+.playIcon {
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+
+  circle, path {
+    transition: fill 200ms ease-in-out, stroke 200ms ease-in-out;
+  }
+  
+  circle {
+    transition: fill-opacity 200ms ease-in-out;
+  }
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  grid-area: rating;
+
+  &::before {
+    content: "";
+    height: 12px;
+    width: 12px;
+    background: url('../../public/assets/ic-star.svg') center no-repeat;
+    margin-right: 6px;
+    margin-top: -4px;
+  }
+}
+
+.year, .rating {
+  font-size: 14px;
+  line-height: 12px;
+}
+
+.year {
+  grid-area: year;
+  justify-self: end;
 }

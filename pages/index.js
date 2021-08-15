@@ -5,10 +5,13 @@ import PopularMovies from '../components/PopularMovies';
 import Button from '../components/Button';
 import Image from 'next/image';
 import { POPULAR_MOVIES, POPULAR_MOVIES2 } from './utils';
+import Sidebar from '../components/Sidebar';
+import { useState } from 'react';
 
 export default function Home({ coverMovie, popularList }) {
   const getMovieCoverPath = (fileName) => `https://image.tmdb.org/t/p/original${fileName}`;
-
+  const [showSidebar, setShowSidebar] = useState(false);
+  
   return (
     <div className={styles.container}>
       <Head>
@@ -17,9 +20,10 @@ export default function Home({ coverMovie, popularList }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.overlay} />
-      <Nav />
+      <Sidebar open={showSidebar} onOpenChange={setShowSidebar} />
+      <Nav onOpenSidebar={setShowSidebar} />
       <main className={styles.main}>
-        <Image src={getMovieCoverPath(coverMovie?.poster_path)} width={220} height={146} alt={coverMovie?.title} layout="fill" objectFit="cover" className={styles.coverImage} />
+        <Image src={getMovieCoverPath(coverMovie?.poster_path)} alt={coverMovie?.title} layout="fill" objectFit="cover" className={styles.coverImage} />
         <div className={styles.mainContent}>
           <div className={styles.coverMovieOuterContainer}>
             <div className={styles.coverMovieInnerContainer}>
