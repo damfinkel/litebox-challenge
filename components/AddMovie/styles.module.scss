@@ -40,6 +40,26 @@
   border: 1px dashed white;
 }
 
+.titleInputContainer {
+  position: relative;
+  margin-bottom: 48px;
+}
+
+.titleInputError {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  opacity: 0;
+  transition: opacity 200ms ease-in-out;
+  font-size: 10px;
+  line-height: 12px;
+  color: red;
+
+  &.visible {
+    opacity: 1;
+  }
+}
+
 .titleInput {
   font-size: 16px;
   line-height: 20px;
@@ -48,7 +68,6 @@
   width: 248px;
   padding: 8px;
   text-align: center;
-  margin-bottom: 48px;
 
   &::placeholder {
     color: white;
@@ -93,6 +112,11 @@
   right: 10px;
   height: 10px;
   background-color: $aqua;
+  transition: width 250ms linear;
+
+  &.uploadError {
+    background-color: red;
+  }
 }
 
 .cancelButton {
@@ -100,4 +124,8 @@
   line-height: 18px;
   font-weight: bold;
   align-self: flex-end;
+
+  &.ready {
+    pointer-events: none;
+  }
 }

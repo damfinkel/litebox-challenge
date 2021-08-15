@@ -1,33 +1,34 @@
 import Button from "../Button";
 import styles from './styles.module.scss';
 import { useDropzone } from 'react-dropzone'
+import { useUpload, UPLOAD_STATE } from "./hooks";
 import { useCallback, useState } from "react";
-
-const UPLOAD_STATE = {
-  initial: 'initial',
-  uploading: 'uploading',
-  error: 'error',
-  uploaded: 'uploaded'
-}
+import cn from 'classnames';
 
 function AddMovie({ onClose }) {
-  const [movieImage, setMovieImage] = useState(undefined);
   const [title, setTitle] = useState("");
-  const [uploadingState, setUploadingState] = useState(UPLOAD_STATE.initial);
+  const [touched, setTouched] = useState();
 
-  const onDrop = useCallback(acceptedFiles => {
-    console.log(acceptedFiles);
-    setUploadingState(UPLOAD_STATE.uploading);
-    setTimeout(() => {
-      setUploadingState(movieImage ? UPLOAD_STATE.uploaded : UPLOAD_STATE.error);
-    }, 115000);
-  }, [movieImage]);
-
-  const isValidForm = () => {
-    return title?.match(/[a-zA-Z]/) && movieImage;
-  }
+  const textIsValid = () => title?.match(/[a-zA-Z0-9]/);
+  const isValidForm = () => textIsValid() && movieImageUrl;
   
-  const {getRootProps, getInputProps, isDragActive} = useDropzone({ onDrop });
+  const { movieImageUrl, uploadingState, uploadProgress, onUploadImage, onReset } = useUpload();
+  const { getRootProps, getInputProps } = useDropzone({ onDrop: onUploadImage });
+
+  const onChangeTitle = (e) => {
+    setTitle(e.target.value);
+    setTouched(true);
+  }
+
+  const onClickUploadButton = useCallback(() => {
+    if (uploadingState === UPLOAD_STATE.error) {
+      onReset();
+    }
+
+    if (uploadingState === UPLOAD_STATE.uploading) {
+      // cancel
+    }
+  }, [uploadingState])
   
   return (
     <form className={styles.addMovieContainer}>
@@ -39,16 +40,34 @@ function AddMovie({ onClose }) {
           <label className={styles.uploadImageLabel}>Agregá un archivo o arrastralo y soltalo aquí</label>
         </div>
       )}
-      {uploadingState === UPLOAD_STATE.uploading && (
+      {uploadingState !== UPLOAD_STATE.initial && (
         <div className={styles.uploadingContainer}>
-          <span className={styles.uploadProgressTitle}>Cargando <strong>40%</strong></span>
+          <span className={styles.uploadProgressTitle}>
+            {uploadingState === UPLOAD_STATE.uploading && <>Cargando <strong>{uploadProgress}</strong></>}
+            {uploadingState === UPLOAD_STATE.error && <><strong>¡Error! </strong>No se pudo cargar la película</>}
+            {uploadingState === UPLOAD_STATE.uploaded && <strong>100% cargado</strong>}
+          </span>
           <div className={styles.emptyProgressLine}>
-            <div className={styles.progressLine} />
+            <div 
+              className={cn(styles.progressLine, { 
+                [styles.uploadError]: uploadingState === UPLOAD_STATE.error
+              })} 
+              style={{ width: `${uploadProgress}%` }} 
+            />
           </div>
-          <button type="button" className={styles.cancelButton}>Cancelar</button>
+          <button type="button" className={cn(styles.cancelButton, { 
+            [styles.ready]: uploadingState === UPLOAD_STATE.uploaded 
+          })} onClick={onClickUploadButton}>
+            {uploadingState === UPLOAD_STATE.uploading && 'Cancelar'}
+            {uploadingState === UPLOAD_STATE.error && 'Reintentar'}
+            {uploadingState === UPLOAD_STATE.uploaded && '¡Listo!'}
+          </button>
         </div>  
       )}
-      <input type="text" className={styles.titleInput} placeholder="Título" onChange={(e) => setTitle(e.target.value)} />
+      <div className={styles.titleInputContainer}>
+        <input type="text" className={styles.titleInput} placeholder="Título" onChange={onChangeTitle} />
+        <span className={cn(styles.titleInputError, { [styles.visible]: !textIsValid() && touched && title.length })}>Sólo letras o números</span> 
+      </div>
       <Button buttonStyle="terciary" disabled={!isValidForm()}>Subir película</Button>
     </form>
   )
