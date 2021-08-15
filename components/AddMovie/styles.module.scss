@@ -20,15 +20,23 @@
 
 .addImageTitle {
   font-size: 20px;
+  font-weight: bold;
   line-height: 20px;
   color: $aqua;
   margin-bottom: 48px;
 }
 
-.imageUploader {
+.imageUploader, .uploadingContainer {
   width: 100%;
   height: 100px;
   margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.imageUploader {
   border: 1px dashed white;
 }
 
@@ -47,6 +55,49 @@
   }
 }
 
-.uploadButton {
+.uploadImageLabel {
+  font-size: 16px;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
+  &::before {
+    content: "";
+    background: url('../../public/assets/ic-clip.svg') center/cover no-repeat;
+    width: 18px;
+    height: 18px;
+    margin-right: 16px;
+  }
+}
+
+.uploadProgressTitle {
+  font-size: 16px;
+  line-height: 16px;
+  align-self: flex-start;
+  margin-bottom: 16px;
+}
+
+.emptyProgressLine {
+  position: relative;
+  height: 4px;
+  width: 100%;
+  background-color: $dove-gray;
+  margin-bottom: 20px;
+}
+
+.progressLine {
+  position: absolute;
+  top: -3px;
+  left: 0;
+  right: 10px;
+  height: 10px;
+  background-color: $aqua;
+}
+
+.cancelButton {
+  font-size: 18px;
+  line-height: 18px;
+  font-weight: bold;
+  align-self: flex-end;
 }

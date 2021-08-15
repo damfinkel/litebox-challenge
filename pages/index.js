@@ -17,6 +17,7 @@ export default function Home({ coverMovie, popularList }) {
 
   const closeModal = () => setModalIsOpen(false);
 
+  // TODO: Do this only once
   if(typeof window === 'undefined') {
     Modal.setAppElement('#root');
   }
