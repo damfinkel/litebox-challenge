@@ -1,9 +1,16 @@
 @import "../../styles/colors.scss";
 
-.popularMoviesContainer {
+.trendingMoviesContainer {
   display: flex;
   flex-direction: column;
 
+}
+
+.dropdownControls {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+  position: relative;
 }
 
 .dropdownTitle {
@@ -12,20 +19,12 @@
   line-height: 18px;
   letter-spacing: 4px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 25px;
   z-index: 1;
   position: relative;
 }
 
 .movieListContainer {
-  display: flex;
-  flex-direction: column;
-
-  > :not(:last-child) {
-    margin-bottom: 20px;
-  }
+  position: relative;
 }
 
 .overlay {
@@ -196,6 +195,7 @@
   display: flex;
   flex-direction: column;
   box-shadow: -2px 3px 4px rgba(black, 0.6);
+  z-index: 10;
 
   .dropdownItem:not(:last-child) {
     margin-bottom: 16px;
@@ -262,4 +262,24 @@
   border-bottom: 5px solid $mine-shaft;
   top: -5px;
   left: 27px;
+}
+
+.myMoviesContainer, .popularMoviesContainer {
+  display: flex;
+  flex-direction: column;
+  opacity: 1;
+
+  > :not(:last-child) {
+    margin-bottom: 20px;
+  }
+
+  &.visible {
+    opacity: 0;
+  }
+}
+
+.myMoviesContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
 }

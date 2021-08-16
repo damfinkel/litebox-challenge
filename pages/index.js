@@ -10,8 +10,8 @@ import { useState } from 'react';
 import Modal from 'react-modal';
 import AddMovie from '../components/AddMovie';
 
-export default function Home({ coverMovie, popularList }) {
-  const getMovieCoverPath = (fileName) => `https://image.tmdb.org/t/p/original${fileName}`;
+export default function Home({ coverMovie, popularList, myMovies }) {
+  const getMovieCoverPath = (fileName) => `${process.env.NEXT_PUBLIC_TMDB_API_URL}/t/p/original${fileName}`;
   const [showSidebar, setShowSidebar] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -40,7 +40,7 @@ export default function Home({ coverMovie, popularList }) {
               </div>
             </div>
           </div>
-          <PopularMovies />
+          <PopularMovies popularMovies={popularList} myMovies={myMovies} />
         </div>
       </main>
       <Modal
@@ -66,10 +66,15 @@ export async function getServerSideProps() {
   // const popularList = popularListResponse.json()?.results?.slice?.(0, 4);
   const popularList = POPULAR_MOVIES2.results.slice?.(0, 4);
 
+  // const popularListResponse = await fetch('https://api.themoviedb.org/3/movie/popular?api_key=6f26fd536dd6192ec8a57e94141f8b20');
+  // const popularList = popularListResponse.json()?.results?.slice?.(0, 4);
+  const myMovies = POPULAR_MOVIES2.results.slice?.(4, 8);
+
   return {
     props: {
       coverMovie: mostPopularMovie || null,
-      popularList: popularList || null
+      popularList: popularList || null,
+      myMovies: myMovies || null
     }
   }
 }
