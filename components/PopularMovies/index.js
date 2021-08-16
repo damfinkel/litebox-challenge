@@ -3,9 +3,11 @@ import { POPULAR_MOVIES } from './utils';
 import styles from './styles.module.scss';
 import Image from 'next/image';
 import PlayButton from '../../public/assets/ic-play-button.svg';
+import cn from 'classnames';
 
 function PopularMovies() {
   const [response, setResponse] = useState(POPULAR_MOVIES.results.slice(0, 4));
+  const [showPopular, setShowPopular] = useState(false);
 
   const getMovieCoverPath = (fileName) => `https://image.tmdb.org/t/p/w500${fileName}`;
 
@@ -15,7 +17,19 @@ function PopularMovies() {
     <div className={styles.popularMoviesContainer}>
       <button type="button" className={styles.dropdownTitle}>
         Ver: 
-        <strong>Populares</strong>
+        <div className={styles.selectedTitleContainer}>
+          <strong className={cn(styles.popularTitle, { [styles.visible]: showPopular })}>Populares</strong>
+          <strong className={cn(styles.myMoviesTitle, { [styles.visible]: !showPopular })}>Mis Películas</strong>
+        </div>
+        <ul className={styles.dropdown}>
+          <i className={styles.arrowUp} />
+          <li className={cn(styles.dropdownItem, { [styles.selected]: showPopular })}>
+            <button type="button" className={styles.dropdownItemButton} onClick={() => setShowPopular(true)}>Populares</button>
+          </li>
+          <li className={cn(styles.dropdownItem, { [styles.selected]: !showPopular })}>
+            <button type="button" className={styles.dropdownItemButton} onClick={() => setShowPopular(false)}>Mis películas</button>
+          </li>
+        </ul>
       </button>
       <div className={styles.movieListContainer}>
         {response.map((movie) => (

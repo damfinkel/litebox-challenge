@@ -16,14 +16,7 @@
   align-items: center;
   margin-bottom: 25px;
   z-index: 1;
-
-  &::after {
-    content: "";
-    background: url('../../public/assets/ic-arrow-down.svg') center no-repeat;
-    margin-left: 11px;
-    width: 11px;
-    height: 10px;
-  }
+  position: relative;
 }
 
 .movieListContainer {
@@ -191,4 +184,82 @@
 .year {
   grid-area: year;
   justify-self: end;
+}
+
+.dropdown {
+  width: 241px;
+  background-color: $mine-shaft;
+  position: absolute;
+  right: 0;
+  top: calc(100% + 10px);
+  padding: 16px 24px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -2px 3px 4px rgba(black, 0.6);
+
+  .dropdownItem:not(:last-child) {
+    margin-bottom: 16px;
+  }
+}
+
+.dropdownItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &::after {
+    content: "";
+    background: url('../../public/assets/ic-tick.svg') center/cover no-repeat;
+    height: 8px;
+    width: 12px;
+    visibility: hidden;
+  }
+
+  &.selected::after {
+    visibility: initial;
+  }
+}
+
+.dropdownItemButton {
+  text-align: start;
+  width: 100%;
+}
+
+.selectedTitleContainer {
+  position: relative;
+  height: 100%;
+  flex: 1;
+}
+
+.popularTitle, .myMoviesTitle {
+  display: flex;
+  align-items: center;
+  left: 0;
+  position: absolute;
+  opacity: 0;
+  transition: opacity 150ms ease-in-out;
+
+  &.visible {
+    opacity: 1;
+    transition: opacity 150ms ease-in-out 150ms;
+  }
+
+  &::after {
+    content: "";
+    background: url('../../public/assets/ic-arrow-down.svg') center no-repeat;
+    margin-left: 11px;
+    width: 11px;
+    height: 10px;
+  }
+}
+
+.arrowUp {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid $mine-shaft;
+  top: -5px;
+  left: 27px;
 }
