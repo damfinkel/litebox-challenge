@@ -57,5 +57,5 @@ export const useUpload = () => {
     clearInterval(progressInterval.current);
   }
 
-  return { movieImageUrl, uploadingState, uploadProgress, onUploadImage, onReset };
+  return { movieImageUrl, uploadingState, uploadProgress, onUploadImage, onReset, setUploadingState };
 }

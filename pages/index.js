@@ -16,11 +16,6 @@ export default function Home({ coverMovie, popularList }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const closeModal = () => setModalIsOpen(false);
-
-  // TODO: Do this only once
-  if(typeof window === 'undefined') {
-    Modal.setAppElement('#root');
-  }
   
   return (
     <div className={styles.container}>
@@ -54,7 +49,6 @@ export default function Home({ coverMovie, popularList }) {
         onAfterClose={closeModal}
         className={styles.modalContainer}
         overlayClassName={styles.modalOverlay}
-        shouldCloseOnOverlayClick
       >
         <AddMovie onClose={closeModal} />
       </Modal>
