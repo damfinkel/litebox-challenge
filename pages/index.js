@@ -51,7 +51,7 @@ export default function Home({ coverMovie, popularList, initialMyMovies }) {
               </div>
             </div>
           </div>
-          {/* <PopularMovies popularMovies={popularList} myMovies={myMovies} /> */}
+          <PopularMovies popularMovies={popularList} myMovies={myMovies} />
         </div>
       </main>
       <Modal
