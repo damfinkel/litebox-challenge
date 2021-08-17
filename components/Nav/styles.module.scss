@@ -85,9 +85,10 @@
   
   .logoContainer {
     position: absolute;
-    width: calc(100% - 64px);
     display: flex;
     justify-content: center;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .navButtonsContainer {

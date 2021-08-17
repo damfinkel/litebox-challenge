@@ -1,6 +1,7 @@
 import styles from './styles.module.scss';
 import Link from 'next/link';
 import cn from 'classnames'
+import Logo from '../../public/assets/ic-liteflix.svg';
 
 function Sidebar({ open, onOpenChange }) {
   return (
@@ -11,6 +12,7 @@ function Sidebar({ open, onOpenChange }) {
           <button type="button" className={styles.notificationsButton} />
           <button type="button" className={styles.profileButton} />
         </div>
+        <Logo className={styles.logo} />
       </div>
       <ul className={styles.linkContainer}>
         <li className={styles.link}><Link href="/"><a>Inicio</a></Link></li>
