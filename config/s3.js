@@ -15,11 +15,12 @@ export const getFileContent = (file) => {
   })
 }
 
-export const uploadToBucket = ({ filename, fileContent }) => {
+export const uploadToBucket = ({ filename, fileContent, type }) => {
   const params = {
     Bucket: process.env.NEXT_PUBLIC_AWS_BUCKET_NAME,
     Key: filename,
-    Body: fileContent
+    Body: fileContent,
+    ContentType: type
   }
 
   return new Promise((resolve, reject) => {

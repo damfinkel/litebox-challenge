@@ -12,7 +12,7 @@ const REQUEST_STATE = {
   success: 'success'
 }
 
-function AddMovie({ onClose }) {
+function AddMovie({ onClose, onFinishUpload }) {
   const [title, setTitle] = useState("");
   const [touched, setTouched] = useState();
   const [requestState, setRequestState] = useState(null);
@@ -21,7 +21,7 @@ function AddMovie({ onClose }) {
   const isValidForm = () => textIsValid() && movieImageUrl;
   
   const { movieImageUrl, uploadingState, uploadProgress, onUploadImage, onReset, setUploadingState } = useUpload();
-  const { getRootProps, getInputProps } = useDropzone({ onDrop: onUploadImage });
+  const { getRootProps, getInputProps } = useDropzone({ onDrop: onUploadImage, accept: 'image/jpeg, image/png' });
 
   const onChangeTitle = (e) => {
     setTitle(e.target.value);
@@ -35,6 +35,11 @@ function AddMovie({ onClose }) {
   const handleUploadMovie = useCallback(async (event) => {
     event.preventDefault();
 
+    if (REQUEST_STATE.success) {
+      onFinishUpload();
+      onClose();
+    }
+
     setRequestState(REQUEST_STATE.loading);
     const response = await createMovie({ imageUrl: movieImageUrl, title });
     if (response.status === 201) {
@@ -43,7 +48,7 @@ function AddMovie({ onClose }) {
       setRequestState(null);
       setUploadingState(UPLOAD_STATE.error);
     }
-  }, [movieImageUrl, setUploadingState, title])
+  }, [movieImageUrl, onClose, onFinishUpload, setUploadingState, title])
 
   return (
     <div className={styles.addMovieContainer}>

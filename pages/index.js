@@ -9,13 +9,24 @@ import Sidebar from '../components/Sidebar';
 import { useState } from 'react';
 import Modal from 'react-modal';
 import AddMovie from '../components/AddMovie';
+import { getMyMovies } from '../api/movies';
 
-export default function Home({ coverMovie, popularList, myMovies }) {
+const getLastNElements = (array, n) => {
+  return array?.slice(Math.max(array.length - n, 0)) || [];
+}
+
+export default function Home({ coverMovie, popularList, initialMyMovies }) {
   const getMovieCoverPath = (fileName) => `${process.env.NEXT_PUBLIC_TMDB_API_URL}/t/p/original${fileName}`;
   const [showSidebar, setShowSidebar] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [myMovies, setMyMovies] = useState(initialMyMovies);
 
   const closeModal = () => setModalIsOpen(false);
+
+  const updateMyMovies = async () => {
+    const movies = await getMyMovies();
+    setMyMovies(getLastNElements(movies, 4));
+  }
   
   return (
     <div className={styles.container}>
@@ -50,7 +61,7 @@ export default function Home({ coverMovie, popularList, myMovies }) {
         className={styles.modalContainer}
         overlayClassName={styles.modalOverlay}
       >
-        <AddMovie onClose={closeModal} />
+        <AddMovie onClose={closeModal} onFinishUpload={updateMyMovies} />
       </Modal>
     </div>
   )
@@ -66,15 +77,13 @@ export async function getServerSideProps() {
   // const popularList = popularListResponse.json()?.results?.slice?.(0, 4);
   const popularList = POPULAR_MOVIES2.results.slice?.(0, 4);
 
-  // const popularListResponse = await fetch('https://api.themoviedb.org/3/movie/popular?api_key=6f26fd536dd6192ec8a57e94141f8b20');
-  // const popularList = popularListResponse.json()?.results?.slice?.(0, 4);
-  const myMovies = POPULAR_MOVIES2.results.slice?.(4, 8);
+  const myMovies = await getMyMovies();
 
   return {
     props: {
       coverMovie: mostPopularMovie || null,
       popularList: popularList || null,
-      myMovies: myMovies || null
+      initialMyMovies: getLastNElements(myMovies, 4) || null
     }
   }
 }

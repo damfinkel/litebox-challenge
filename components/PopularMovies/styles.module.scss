@@ -164,6 +164,7 @@
   display: flex;
   align-items: center;
   grid-area: rating;
+  opacity: 0;
 
   &::before {
     content: "";
@@ -267,15 +268,15 @@
 .myMoviesContainer, .popularMoviesContainer {
   display: flex;
   flex-direction: column;
-  opacity: 1;
+  opacity: 0;
 
   > :not(:last-child) {
     margin-bottom: 20px;
   }
+}
 
-  &.visible {
-    opacity: 0;
-  }
+.visible {
+  opacity: 1;
 }
 
 .myMoviesContainer {

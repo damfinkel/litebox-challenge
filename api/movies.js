@@ -11,3 +11,10 @@ export const createMovie = ({ imageUrl, title }) => {
       body: JSON.stringify({ imageUrl, title })
     })
 }
+
+export const getMyMovies = () => {
+  return fetch(`${process.env.NEXT_PUBLIC_API_URL}/movies`,
+    {
+      headers,
+    }).then(res => res.json())
+}

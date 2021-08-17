@@ -31,7 +31,7 @@ export const useUpload = () => {
     }, 250);
     try {
       const fileContent = await getFileContent(file);
-      const fileUrl = await uploadToBucket({ filename: file.name, fileContent });
+      const fileUrl = await uploadToBucket({ filename: file.name, fileContent, type: file.type });
 
       if (UPLOAD_STATE.uploading) {
         setMovieImageUrl(fileUrl);
