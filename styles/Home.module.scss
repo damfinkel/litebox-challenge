@@ -110,3 +110,53 @@
   height: 440px;
   background-color: $mine-shaft;
 }
+
+
+@media screen and (max-width: 375px) {
+  .main {
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+  }
+
+  .mainContent {
+    flex-direction: column;
+    padding: 0 32px;
+  }
+
+  .coverMovieOuterContainer {
+    display: flex;
+    flex-direction: column;
+    margin-right: 0; 
+  }
+
+  .coverMovieInnerContainer {
+    align-items: center;
+    text-align: center;
+  }
+
+  .liteflixOriginal {
+    font-size: 20px;
+    line-height: 24px;
+    margin-bottom: 16px;
+  }
+
+  .coverMovieTitle {
+    font-size: 76px;
+    line-height: 78px;
+    margin-bottom: 16px;
+    letter-spacing: 12px;
+  }
+
+  .playButton {
+    margin-bottom: 16px;
+  }
+
+  .buttonActionContainer {
+    flex-direction: column;
+  }
+
+  .overlay {
+    background: linear-gradient(transparent, $mine-shaft 85%);
+  }
+}

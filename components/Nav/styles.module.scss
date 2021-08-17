@@ -72,3 +72,25 @@
   background: url("../../public/assets/ic-default-avatar.svg") center no-repeat;
   border-radius: 20px;
 }
+
+@media screen and (max-width: 375px) {
+  .nav {
+    padding: 24px 32px;
+  }
+
+  .addMovieButton, .notificationsButton {
+    display: none;
+  }
+  
+  .logoContainer {
+    position: absolute;
+    width: calc(100% - 64px);
+    display: flex;
+    justify-content: center;
+  }
+
+  .navButtonsContainer {
+    flex: 1;
+    justify-content: space-between;
+  }
+}
