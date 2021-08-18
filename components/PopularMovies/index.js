@@ -1,5 +1,4 @@
 import { useState, useRef } from 'react';
-import { POPULAR_MOVIES } from './utils';
 import styles from './styles.module.scss';
 import Image from 'next/image';
 import PlayButton from '../../public/assets/ic-play-button.svg';
@@ -12,7 +11,7 @@ function PopularMovies({ popularMovies, myMovies }) {
   const dropdownRef = useRef();
   useOnClickOutside(dropdownRef, () => setOpenDropdown(false));
 
-  const getPopularMovieCoverPath = (fileName) => `${process.env.NEXT_PUBLIC_TMDB_API_URL}/t/p/w500${fileName}`;
+  const getPopularMovieCoverPath = (fileName) => `${process.env.NEXT_PUBLIC_TMDB_IMAGE_HOST_URL}/t/p/w500${fileName}`;
   const getMyMovieCoverPath = (fileName) => {
     return fileName
   }
