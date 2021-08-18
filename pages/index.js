@@ -8,11 +8,7 @@ import Sidebar from '../components/Sidebar';
 import { useState } from 'react';
 import Modal from 'react-modal';
 import AddMovie from '../components/AddMovie';
-import { getCoverMovie, getMyMovies, getPopularMovies } from '../api/movies';
-
-const getLastNElements = (array, n) => {
-  return array?.slice(Math.max(array.length - n, 0)) || [];
-}
+import { getCoverMovie, getMyMovies, getPopularMovies, getLastNElements } from '../api/movies';
 
 export default function Home({ coverMovie, popularList, initialMyMovies }) {
   const getMovieCoverPath = (fileName) => `${process.env.NEXT_PUBLIC_TMDB_IMAGE_HOST_URL}/t/p/original${fileName}`;
@@ -38,9 +34,9 @@ export default function Home({ coverMovie, popularList, initialMyMovies }) {
       <Sidebar open={showSidebar} onOpenChange={setShowSidebar} />
       <Nav onOpenSidebar={setShowSidebar} onAddMovie={() => setModalIsOpen(true)} />
       <main className={styles.main}>
-        <Image src={getMovieCoverPath(coverMovie?.poster_path)} alt={coverMovie?.title} layout="fill" objectFit="cover" className={styles.coverImage} />
         <div className={styles.mainContent}>
           <div className={styles.coverMovieOuterContainer}>
+            <Image src={getMovieCoverPath(coverMovie?.poster_path)} alt={coverMovie?.title} layout="fill" objectFit="cover" className={styles.coverImage} />
             <div className={styles.coverMovieInnerContainer}>
               <h2 className={styles.liteflixOriginal}>Original de <strong>Liteflix</strong></h2>
               <h1 className={styles.coverMovieTitle}>{coverMovie?.original_title}</h1>

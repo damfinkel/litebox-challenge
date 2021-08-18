@@ -3,7 +3,7 @@ const headers = {
   'Content-Type': 'application/json'
 }
 
-const getLastNElements = (array, n) => {
+export const getLastNElements = (array, n) => {
   return array?.slice(Math.max(array.length - n, 0)) || [];
 }
 
