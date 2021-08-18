@@ -25,7 +25,7 @@ function PopularMovies({ popularMovies, myMovies }) {
           Ver: 
           <div className={styles.selectedTitleContainer}>
             <strong className={cn(styles.popularTitle, { [styles.visible]: showPopular })}>Populares</strong>
-            {/* <strong className={cn(styles.myMoviesTitle, { [styles.visible]: !showPopular })}>Mis Películas</strong> */}
+            <strong className={cn(styles.myMoviesTitle, { [styles.visible]: !showPopular })}>Mis Películas</strong>
           </div>
         </button>
         {openDropdown && <ul className={styles.dropdown}>
