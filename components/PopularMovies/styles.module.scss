@@ -293,12 +293,9 @@
 
 
 @media screen and (max-width: $mobile-breakpoint) {
-  .movieListContainer {
-    padding-bottom: 52px;
-  }
-
   .trendingMoviesContainer {
     align-items: center;
+    padding: 64px 12px;
   }
 
   .dropdown {
@@ -311,5 +308,13 @@
   .arrowUp {
     left: 50%;
     transform: translateX(-50%);
+  }
+
+  .trendingMoviesContainer {
+    background-color: $mine-shaft;
+  }
+
+  .movieListContainer, .myMoviesContainer, .moviePreviewContainer {
+    width: 100%;
   }
 }

@@ -30,20 +30,18 @@ export default function Home({ coverMovie, popularList, initialMyMovies }) {
         <meta name="description" content="Las mejores películas y series" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className={styles.overlay} />
       <Sidebar open={showSidebar} onOpenChange={setShowSidebar} />
       <Nav onOpenSidebar={setShowSidebar} onAddMovie={() => setModalIsOpen(true)} />
       <main className={styles.main}>
         <div className={styles.mainContent}>
           <div className={styles.coverMovieOuterContainer}>
+            <div className={styles.overlay} />
             <Image src={getMovieCoverPath(coverMovie?.poster_path)} alt={coverMovie?.title} layout="fill" objectFit="cover" className={styles.coverImage} />
-            <div className={styles.coverMovieInnerContainer}>
-              <h2 className={styles.liteflixOriginal}>Original de <strong>Liteflix</strong></h2>
-              <h1 className={styles.coverMovieTitle}>{coverMovie?.original_title}</h1>
-              <div className={styles.buttonActionContainer}>
-                <Button buttonStyle="primary" className={styles.playButton}>Reproducir</Button>
-                <Button buttonStyle="secondary" className={styles.myListButton}>Mi Lista</Button>
-              </div>
+            <h2 className={styles.liteflixOriginal}>Original de <strong>Liteflix</strong></h2>
+            <h1 className={styles.coverMovieTitle}>{coverMovie?.original_title}</h1>
+            <div className={styles.buttonActionContainer}>
+              <Button buttonStyle="primary" className={styles.playButton}>Reproducir</Button>
+              <Button buttonStyle="secondary" className={styles.myListButton}>Mi Lista</Button>
             </div>
           </div>
           <PopularMovies popularMovies={popularList} myMovies={myMovies} />
