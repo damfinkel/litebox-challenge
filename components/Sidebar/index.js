@@ -3,7 +3,7 @@ import Link from 'next/link';
 import cn from 'classnames'
 import Logo from '../../public/assets/ic-liteflix.svg';
 
-function Sidebar({ open, onOpenChange }) {
+function Sidebar({ open, onOpenChange, onAddMovie }) {
   return (
     <div className={cn(styles.sidebarContainer, { [styles.openSidebar]: open, [styles.closeSidebar]: !open })}>
       <div className={styles.topContainer}>
@@ -21,7 +21,7 @@ function Sidebar({ open, onOpenChange }) {
         <li className={styles.link}><Link href="/"><a>Populares</a></Link></li>
         <li className={styles.link}><Link href="/"><a>Mis Películas</a></Link></li>
         <li className={styles.link}><Link href="/"><a>Mi Lista</a></Link></li>
-        <button className={styles.addMovieButton}>Agregar Película</button>
+        <button className={styles.addMovieButton} onClick={onAddMovie}>Agregar Película</button>
         <button className={styles.logoutButton}>Cerrar Sesión</button>
       </ul>
     </div>

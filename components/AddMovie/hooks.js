@@ -59,3 +59,19 @@ export const useUpload = () => {
 
   return { movieImageUrl, uploadingState, uploadProgress, onUploadImage, onReset, setUploadingState };
 }
+
+export const useWindowSize = () => {
+  const [size, setWindowSize] = useState({ width: undefined, height: undefined });
+
+  const onResize = () => {
+    setWindowSize({ width: window.innerWidth, height: window.innerHeight });
+  }
+
+  useEffect(() => {
+    window.addEventListener('resize', onResize);
+    onResize();
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
+
+  return size;
+}

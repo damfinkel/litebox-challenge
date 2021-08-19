@@ -158,6 +158,11 @@
     height: calc(100% + 1px);
     background: linear-gradient(transparent, $mine-shaft 93%);
   }
+
+  .modalContainer {
+    height: 100vh;
+    width: 100vw;
+  }
 }
 
 @media screen and (max-width: $small-mobile-breakpoint) {
