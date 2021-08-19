@@ -106,6 +106,10 @@
   align-self: flex-start;
 }
 
+.logo {
+  display: none;
+}
+
 @media screen and (max-width: $mobile-breakpoint) {
   .sidebarContainer {
     padding: 24px 34px;
@@ -122,9 +126,8 @@
   .logo {
     display: block;
     position: absolute;
-    width: calc(100% - 64px);
-    display: flex;
-    justify-content: center;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .link a, .addMovieButton, .logoutButton {
