@@ -47,6 +47,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  transition: transform 250ms ease-in;
 
   &::after {
     content: "";
@@ -77,6 +78,10 @@
       transform: translate3d(0, 0, 0);
       transition: transform 250ms ease-in, opacity 250ms ease-in;
     }
+  }
+
+  &:hover {
+    transform: scale(1.03);
   }
 }
 

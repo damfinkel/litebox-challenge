@@ -56,6 +56,15 @@
   margin-bottom: 24px;
 }
 
+@keyframes bounce {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-5px);
+  }
+}
+
 .coverMovieTitle {
   color: $aqua;
   font-weight: bold;
@@ -64,6 +73,7 @@
   letter-spacing: 16px;
   text-transform: uppercase;
   margin-bottom: 32px;
+  animation: bounce 1s infinite alternate ease-in-out;
 }
 
 .buttonActionContainer {
