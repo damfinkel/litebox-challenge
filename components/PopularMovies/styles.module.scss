@@ -59,7 +59,7 @@
     background: url('../../public/assets/ic-play-button.svg') center/cover no-repeat;
   }
 
-  &:hover {
+  &:hover, &.showInfo {
     .movieTitle {
       opacity: 0;
       transform: translate3d(0, 10px, 0);
@@ -148,8 +148,8 @@
 }
 
 .playIcon {
-  width: 24px;
-  height: 24px;
+  min-width: 24px;
+  min-height: 24px;
   margin-right: 12px;
 
   circle, path {
@@ -275,6 +275,7 @@
   display: flex;
   flex-direction: column;
   opacity: 0;
+  pointer-events: none;
 
   > :not(:last-child) {
     margin-bottom: 20px;
@@ -282,6 +283,7 @@
 }
 
 .visible {
+  pointer-events: initial;
   opacity: 1;
 }
 
