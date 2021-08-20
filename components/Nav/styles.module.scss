@@ -77,6 +77,12 @@
 @media screen and (max-width: $mobile-breakpoint) {
   .nav {
     padding: 24px 32px;
+    background: linear-gradient(rgba($mine-shaft, 0.8) 20%, transparent);
+    transition: background-color 250ms ease-in;
+  }
+
+  .opaque {
+    background-color: rgba($mine-shaft, 0.9);
   }
 
   .addMovieButton, .notificationsButton {
