@@ -6,6 +6,7 @@
   height: 100%;
   align-items: center;
   display: flex;
+  flex-direction: column;
 }
 
 .addMovieContent {
@@ -56,7 +57,17 @@
   display: none;
 }
 
+.topBar {
+  display: none;
+}
+
 @media screen and (max-width: $mobile-breakpoint) {
+  .topBar {
+    display: flex;
+    padding: 24px;
+    width: 100%;
+  }
+
   .addMovieContent {
     padding: 76px 24px;
 

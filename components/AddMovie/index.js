@@ -5,6 +5,7 @@ import { useCallback, useState } from "react";
 import cn from 'classnames';
 import { createMovie } from "../../api/movies";
 import UpperFormContainer from "./UpperFormContainer";
+import MobileModalTopBar from "../MobileModalTopBar";
 
 const REQUEST_STATE = {
   loading: 'loading',
@@ -43,6 +44,7 @@ function AddMovie({ onClose, onFinishUpload }) {
 
   return (
     <div className={styles.addMovieContainer}>
+      <MobileModalTopBar onClose={onClose} className={styles.topBar} />
       <button type="button" className={styles.closeButton} onClick={onClose} />
       <form className={styles.addMovieContent} onSubmit={handleUploadMovie}>
         <UpperFormContainer 

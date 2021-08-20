@@ -32,7 +32,7 @@ export default function Home({ coverMovie, popularList, initialMyMovies }) {
         <meta name="description" content="Las mejores películas y series" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Sidebar open={showSidebar} onOpenChange={setShowSidebar} onAddMovie={onOpenAddMovieModal} />
+      <Sidebar open={showSidebar} onClose={() => setShowSidebar(false)} onAddMovie={onOpenAddMovieModal} />
       <Nav onOpenSidebar={setShowSidebar} onAddMovie={onOpenAddMovieModal} />
       <main className={styles.main}>
         <div className={styles.mainContent}>

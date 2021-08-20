@@ -15,6 +15,10 @@
   transition: transform 500ms;
 }
 
+.topBar {
+  margin-bottom: 95px;
+}
+
 .openSidebar {
   transform: translate3d(761px, 0, 0);
 }
@@ -23,48 +27,9 @@
   transform: translate3d(-761px, 0, 0);
 }
 
-.topContainer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 95px;
-}
-
-.closeButton {
-  background: url('../../public/assets/ic-close.svg') center no-repeat;
-  width: 18px;
-  height: 18px;
-}
-
 .rightContent {
   display: flex;
   align-items: center;
-}
-
-.notificationsButton {
-  position: relative;
-  height: 40px;
-  width: 26px;
-  background: url("../../public/assets/ic-bell.svg") center no-repeat;
-  margin-right: 40px;
-
-  &:after {
-    position: absolute;
-    content: "";
-    background-color: $aqua;
-    height: 9px;
-    width: 9px;
-    border-radius: 4.5px;
-    top: 7px;
-    right: 0;
-  }
-}
-
-.profileButton {
-  height: 40px;
-  width: 40px;
-  background: url("../../public/assets/ic-default-avatar.svg") center no-repeat;
-  border-radius: 20px;
 }
 
 .linkContainer {
@@ -113,21 +78,6 @@
 @media screen and (max-width: $mobile-breakpoint) {
   .sidebarContainer {
     padding: 24px 34px;
-  }
-
-  .notificationsButton {
-    display: none;
-  }
-
-  .topContainer {
-    position: relative;
-  }
-
-  .logo {
-    display: block;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
   }
 
   .link a, .addMovieButton, .logoutButton {
