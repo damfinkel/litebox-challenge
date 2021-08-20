@@ -33,7 +33,7 @@ export const useUpload = () => {
       const fileContent = await getFileContent(file);
       const fileUrl = await uploadToBucket({ filename: file.name, fileContent, type: file.type });
 
-      if (UPLOAD_STATE.uploading) {
+      if (UPLOAD_STATE.uploading && progressInterval.current) {
         setMovieImageUrl(fileUrl);
         setUploadingState(UPLOAD_STATE.uploaded);
       }
@@ -50,11 +50,13 @@ export const useUpload = () => {
   }, [uploadProgress, uploadingState]);
 
   const onReset = () => {
+    setUploadingState(UPLOAD_STATE.initial)
+    clearInterval(progressInterval.current);
+    progressInterval.current = null;
+
     setMovieImageUrl(undefined);
     setUploadProgress(0);
-    setUploadingState(UPLOAD_STATE.initial)
     progressRef.current = 0;
-    clearInterval(progressInterval.current);
   }
 
   return { movieImageUrl, uploadingState, uploadProgress, onUploadImage, onReset, setUploadingState };

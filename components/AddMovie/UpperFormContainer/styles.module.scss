@@ -1,0 +1,202 @@
+@import '../../../styles/colors.scss';
+@import '../../../styles/variables.scss';
+
+.upperFormContainer {
+  position: relative;
+}
+
+.successContainer {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  margin-bottom: 72px;
+  width: 113px;
+  height: 34px;
+}
+
+.successTitle {
+  font-size: 24px;
+  line-height: 26px;
+  font-weight: bold;
+  margin-bottom: 24px;
+}
+
+.successSubtitle {
+  font-size: 20px;
+  line-height: 24px;
+  margin-bottom: 92px;
+  text-align: center;
+}
+
+.preRequestContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.successContainer,
+.preRequestContainer {
+  transition: opacity 250ms ease-in-out;
+}
+
+.addImageTitle {
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 20px;
+  color: $aqua;
+  margin-bottom: 48px;
+}
+
+.imageUploader, .uploadingContainer {
+  width: 100%;
+  min-height: 100px;
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.imageUploader {
+  border: 1px dashed white;
+}
+
+.uploadImageLabel {
+  font-size: 16px;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &::before {
+    content: "";
+    background: url('../../../public/assets/ic-clip.svg') center/cover no-repeat;
+    width: 18px;
+    height: 18px;
+    margin-right: 16px;
+  }
+}
+
+.uploadProgressTitle {
+  font-size: 16px;
+  line-height: 16px;
+  margin-bottom: 16px;
+}
+
+.emptyProgressLine {
+  position: relative;
+  height: 4px;
+  width: 100%;
+  background-color: $dove-gray;
+  margin-bottom: 20px;
+}
+
+.progressLine {
+  position: absolute;
+  top: -3px;
+  left: 0;
+  right: 10px;
+  height: 10px;
+  background-color: $aqua;
+  transition: width 250ms linear;
+
+  &.uploadError {
+    background-color: red;
+  }
+}
+
+.cancelButton {
+  font-size: 18px;
+  line-height: 18px;
+  font-weight: bold;
+  align-self: flex-end;
+
+  &.ready {
+    pointer-events: none;
+  }
+}
+
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.titleInputContainer {
+  position: relative;
+  margin-bottom: 48px;
+}
+
+.titleInputError {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  opacity: 0;
+  transition: opacity 200ms ease-in-out;
+  font-size: 10px;
+  line-height: 12px;
+  color: red;
+
+  &.visible {
+    opacity: 1;
+  }
+}
+
+.titleInput {
+  font-size: 16px;
+  line-height: 20px;
+  border-bottom: 1px solid white;
+  background-color: transparent;
+  width: 248px;
+  padding: 8px;
+  text-align: center;
+
+  &::placeholder {
+    color: white;
+  }
+}
+
+@media screen and (max-width: $mobile-breakpoint) {
+  .logo {
+    display: none;
+  }
+
+  .addImageTitle {
+    font-size: 22px;
+    line-height: 22px;
+    margin-bottom: 72px;
+  }
+
+  .successTitle {
+    margin-bottom: 32px;
+  }
+
+  .successSubtitle {
+    line-height: 32px;
+    margin-bottom: 133px;
+  }
+
+  .titleInputContainer {
+    margin-bottom: 96px;
+  }
+
+  .imageUploader, .uploadingContainer {
+    margin-bottom: 56px;
+    min-height: 80px;
+  }
+}
+
+@media screen and (max-width: $small-mobile-breakpoint) {
+  .imageUploader {
+    margin-bottom: 30px;
+  }
+
+  .titleInputContainer {
+    margin-bottom: 50px;
+  }
+}
