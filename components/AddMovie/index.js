@@ -1,7 +1,7 @@
 import Button from "../Button";
 import styles from './styles.module.scss';
-import { useUpload, UPLOAD_STATE, useWindowSize } from "./hooks";
-import { useCallback, useState } from "react";
+import { useUpload, UPLOAD_STATE } from "./hooks";
+import { useCallback, useEffect, useState } from "react";
 import cn from 'classnames';
 import { createMovie } from "../../api/movies";
 import UpperFormContainer from "./UpperFormContainer";

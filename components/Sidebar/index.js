@@ -2,8 +2,17 @@ import styles from './styles.module.scss';
 import Link from 'next/link';
 import cn from 'classnames';
 import MobileModalTopBar from '../MobileModalTopBar';
+import { useEffect } from 'react';
+
+export const usePreventScroll = ({ open }) => {
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : 'unset';
+  }, [open]);
+}
 
 function Sidebar({ open, onClose, onAddMovie }) {
+  usePreventScroll({ open });
+  
   return (
     <div className={cn(styles.sidebarContainer, { [styles.openSidebar]: open, [styles.closeSidebar]: !open })}>
       <MobileModalTopBar onClose={onClose} className={styles.topBar} />
