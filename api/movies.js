@@ -21,6 +21,7 @@ export const getMyMovies = async () => {
     headers,
   })
   const data = await response.json();
+  console.log(`${process.env.NEXT_PUBLIC_API_URL}/movies`)
   return getLastNElements(data, 4);
 }
 

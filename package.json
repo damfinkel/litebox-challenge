@@ -14,11 +14,13 @@
     "babel-plugin-inline-react-svg": "^2.0.1",
     "classnames": "^2.3.1",
     "next": "11.1.0",
+    "plaiceholder": "^2.0.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-dropzone": "^11.3.4",
     "react-modal": "^3.14.3",
-    "sass": "^1.37.5"
+    "sass": "^1.37.5",
+    "sharp": "^0.29.0"
   },
   "devDependencies": {
     "eslint": "7.32.0",

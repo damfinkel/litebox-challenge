@@ -4,7 +4,6 @@
 .trendingMoviesContainer {
   display: flex;
   flex-direction: column;
-
 }
 
 .dropdownControls {
@@ -26,6 +25,8 @@
 
 .movieListContainer {
   position: relative;
+  width: 100%;
+  max-width: 500px;
 }
 
 .overlay {
@@ -35,161 +36,6 @@
   left: 0;
   position: absolute;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0) 22.78%, #000000 122.69%);
-}
-
-.moviePreviewContainer {
-  position: relative;
-  width: 220px;
-  height: 146px;
-  border-radius: 4px;
-  overflow: hidden;
-  padding: 14px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  transition: transform 250ms ease-in;
-
-  &::after {
-    content: "";
-    position: absolute;
-    height: 38px;
-    width: 38px;
-    top: 50%;
-    left: 50%;
-    transform: translate3d(-20px, -20px, 0);
-    background: url('../../public/assets/ic-play-button.svg') center/cover no-repeat;
-  }
-
-  &:hover, &.showInfo {
-    .movieTitle {
-      opacity: 0;
-      transform: translate3d(0, 10px, 0);
-      transition: transform 250ms ease-in, opacity 250ms ease-in;
-    }
-
-    &::after {
-      opacity: 0;
-      transform: translate3d(-20px, -10px, 0);
-      transition: transform 250ms ease-in, opacity 250ms ease-in;
-    }
-
-    .hoveredInformation {
-      opacity: 1;
-      transform: translate3d(0, 0, 0);
-      transition: transform 250ms ease-in, opacity 250ms ease-in;
-    }
-  }
-
-  &:hover {
-    transform: scale(1.03);
-  }
-}
-
-.movieTitle, .moviePreviewContainer::after {
-  transition: transform 250ms ease-in 250ms, opacity 250ms ease-in 250ms;
-}
-
-.hoveredInformation {
-  transition: transform 250ms ease-in, opacity 250ms ease-in;
-  opacity: 0;
-  transform: translate3d(0, 10px, 0);
-}
-
-.movieCover {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
-.movieTitle {
-  color: white;
-  font-size: 18px;
-  line-height: 16px;
-  letter-spacing: 4px;
-  text-align: center;
-  z-index: 1;
-}
-
-.hoveredInformation {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: grid;
-  grid-template-areas: 
-    "title title"
-    "rating year";
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, auto);
-  row-gap: 20px;
-  justify-content: space-between;
-  padding: 16px;
-  z-index: 1;
-}
-
-.playButton {
-  display: flex;
-  align-items: center;
-  font-size: 16px;
-  line-height: 16px;
-  grid-area: title;
-
-  &:hover {
-    .playIcon {
-      circle {
-        stroke: $mine-shaft;
-        fill: $aqua;
-        fill-opacity: 1;
-      }
-
-      path {
-        fill: $mine-shaft;
-        stroke: transparent;
-      }
-    } 
-  }
-}
-
-.playIcon {
-  min-width: 24px;
-  min-height: 24px;
-  margin-right: 12px;
-
-  circle, path {
-    transition: fill 200ms ease-in-out, stroke 200ms ease-in-out;
-  }
-  
-  circle {
-    transition: fill-opacity 200ms ease-in-out;
-  }
-}
-
-.rating {
-  display: flex;
-  align-items: center;
-  grid-area: rating;
-  opacity: 0;
-
-  &::before {
-    content: "";
-    height: 12px;
-    width: 12px;
-    background: url('../../public/assets/ic-star.svg') center no-repeat;
-    margin-right: 6px;
-    margin-top: -4px;
-  }
-}
-
-.year, .rating {
-  font-size: 14px;
-  line-height: 12px;
-}
-
-.year {
-  grid-area: year;
-  justify-self: end;
 }
 
 .dropdown {
@@ -281,6 +127,7 @@
   flex-direction: column;
   opacity: 0;
   pointer-events: none;
+  padding: 0 5px;
 
   > :not(:last-child) {
     margin-bottom: 20px;
@@ -298,11 +145,12 @@
   left: 0;
 }
 
-
 @media screen and (max-width: $mobile-breakpoint) {
   .trendingMoviesContainer {
     align-items: center;
     padding: 64px 12px;
+    background-color: $mine-shaft;
+    width: 100%;
   }
 
   .dropdown {
@@ -315,13 +163,5 @@
   .arrowUp {
     left: 50%;
     transform: translateX(-50%);
-  }
-
-  .trendingMoviesContainer {
-    background-color: $mine-shaft;
-  }
-
-  .movieListContainer, .myMoviesContainer, .moviePreviewContainer {
-    width: 100%;
   }
 }
