@@ -30,10 +30,10 @@ function PopularMovies({ popularMovies, myMovies }) {
     <div className={styles.trendingMoviesContainer}>
       <div ref={dropdownRef} className={styles.dropdownControls}>
         <button className={styles.dropdownTitle} onClick={() => setOpenDropdown(prev => !prev)}>
-          Ver: 
+          Ver:&nbsp;
           <div className={styles.selectedTitleContainer}>
             <strong className={cn(styles.popularTitle, { [styles.visible]: showPopular })}>Populares</strong>
-            <strong className={cn(styles.myMoviesTitle, { [styles.visible]: !showPopular })}>Mis Películas</strong>
+            <strong className={cn(styles.myMoviesTitle, { [styles.visible]: !showPopular })}> Mis Películas</strong>
           </div>
         </button>
         {openDropdown && <ul className={styles.dropdown}>
