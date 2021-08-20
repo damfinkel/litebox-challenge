@@ -21,7 +21,7 @@ export const getMyMovies = async () => {
     headers,
   })
   const data = await response.json();
-  return getLastNElements(data?.results, 4);
+  return getLastNElements(data, 4);
 }
 
 export const getCoverMovie = async () => {

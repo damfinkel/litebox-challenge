@@ -39,6 +39,15 @@
   border-radius: 20px;
 }
 
+.logo {
+  display: none;
+}
+
+.rightContent {
+  display: flex;
+  align-items: center;
+}
+
 @media screen and (max-width: $mobile-breakpoint) {
   .notificationsButton {
     display: none;

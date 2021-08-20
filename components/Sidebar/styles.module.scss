@@ -13,6 +13,7 @@
   z-index: 20;
   padding: 45px 90px;
   transition: transform 500ms;
+  position: fixed;
 }
 
 .topBar {
@@ -25,11 +26,6 @@
 
 .closeSidebar {
   transform: translate3d(-761px, 0, 0);
-}
-
-.rightContent {
-  display: flex;
-  align-items: center;
 }
 
 .linkContainer {
@@ -78,6 +74,7 @@
 @media screen and (max-width: $mobile-breakpoint) {
   .sidebarContainer {
     padding: 24px 34px;
+    background: $mine-shaft;
   }
 
   .link a, .addMovieButton, .logoutButton {
