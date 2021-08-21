@@ -22,6 +22,7 @@ export default function Home({ coverMovie, popularList, initialMyMovies, placeho
 
   const updateMyMovies = async () => {
     const movies = await getMyMovies();
+    console.log(movies);
     setMyMovies(getLastNElements(movies, 4));
   }
 

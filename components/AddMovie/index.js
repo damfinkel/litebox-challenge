@@ -28,14 +28,11 @@ function AddMovie({ onClose, onFinishUpload }) {
   const handleUploadMovie = useCallback(async (event) => {
     event.preventDefault();
 
-    if (REQUEST_STATE.success) {
-      onFinishUpload();
-    }
-
     setRequestState(REQUEST_STATE.loading);
     const response = await createMovie({ imageUrl: movieImageUrl, title });
     if (response.status === 201) {
       setRequestState(REQUEST_STATE.success);
+      onFinishUpload();
     } else {
       setRequestState(null);
       setUploadingState(UPLOAD_STATE.error);
