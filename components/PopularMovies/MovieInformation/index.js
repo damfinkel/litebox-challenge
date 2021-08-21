@@ -8,8 +8,8 @@ import { HomeContext } from '../../../contexts';
 import { useOnClickOutside } from "../hooks";
 
 function MovieInformation({ movie, showMovieDetail, onToggleMovieDetail, imageUrlPath }) {
-  const [imageSrc, setImageSrc] = useState(imageUrlPath);
   const { placeholderImage } = useContext(HomeContext);
+  const [imageSrc, setImageSrc] = useState(imageUrlPath);
   const ref = useRef();
   useOnClickOutside(ref, () => onToggleMovieDetail(null))
 
@@ -18,13 +18,13 @@ function MovieInformation({ movie, showMovieDetail, onToggleMovieDetail, imageUr
   return (
     <div ref={ref} key={movie.id} className={cn(styles.moviePreviewContainer, { [styles.showInfo]: showMovieDetail })} onClick={() => onToggleMovieDetail(movie.id)}>
       <Image src={imageSrc} 
-        unoptimized
         alt={movie.title}
         className={styles.movieCover}
-        layout="fill" objectFit="cover"
+        layout="fill"
+        objectFit="cover"
         placeholder="blur"
         blurDataURL={placeholderImage}
-        // onError={() => setImageSrc(placeholderImage)}
+        onError={() => setImageSrc(placeholderImage)}
       />
       <h3 className={styles.movieTitle}>{movie.title}</h3>
       <div className={styles.hoveredInformation}>

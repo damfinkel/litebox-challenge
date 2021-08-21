@@ -11,6 +11,8 @@ import Modal from 'react-modal';
 import AddMovie from '../components/AddMovie';
 import { getCoverMovie, getMyMovies, getPopularMovies, getLastNElements } from '../api/movies';
 import { HomeContext } from '../contexts';
+import getConfig from 'next/config'
+import path from 'path'
 
 export default function Home({ coverMovie, popularList, initialMyMovies, placeholderImage }) {
   const getMovieCoverPath = (fileName) => `${process.env.NEXT_PUBLIC_TMDB_IMAGE_HOST_URL}/t/p/original${fileName}`;
@@ -70,7 +72,7 @@ export default function Home({ coverMovie, popularList, initialMyMovies, placeho
 export async function getServerSideProps() {
   // TODO: what happens if there's no popular movie or requets fails?
   const [mostPopularMovie, popularList, myMovies] = await Promise.all([getCoverMovie(), getPopularMovies(), getMyMovies()])
-  const { base64 } = await getPlaiceholder("/../public/assets/placeholder.gif", { size: 10 });
+  const { base64 } = await getPlaiceholder("https://user-images.githubusercontent.com/20684618/31289519-9ebdbe1a-aae6-11e7-8f82-bf794fdd9d1a.png");
 
   return {
     props: {
