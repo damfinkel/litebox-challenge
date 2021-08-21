@@ -130,7 +130,7 @@
   flex-direction: column;
   opacity: 0;
   pointer-events: none;
-  padding: 0 5px;
+  padding: 3px;
 
   > :not(:last-child) {
     margin-bottom: 20px;
@@ -167,5 +167,9 @@
   .arrowUp {
     left: 50%;
     transform: translateX(-50%);
+  }
+
+  .myMoviesContainer, .popularMoviesContainer {
+    padding: 0;
   }
 }
