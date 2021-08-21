@@ -77,8 +77,29 @@
     background: $mine-shaft;
   }
 
+  .topBar {
+    margin-bottom: 64px;
+  }
+
   .link a, .addMovieButton, .logoutButton {
     font-size: 16px;
     line-height: 16px;
+  }
+}
+
+@media screen and (max-width: $small-mobile-breakpoint) {
+  .linkContainer {
+    
+    .link:not(:last-of-type) {
+      margin-bottom: 25px;
+    }
+  
+    .link:last-of-type {
+      margin-bottom: 50px;
+    }
+  }
+
+  .addMovieButton {
+    margin-bottom: 50px;
   }
 }
