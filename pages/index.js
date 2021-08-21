@@ -11,8 +11,6 @@ import Modal from 'react-modal';
 import AddMovie from '../components/AddMovie';
 import { getCoverMovie, getMyMovies, getPopularMovies, getLastNElements } from '../api/movies';
 import { HomeContext } from '../contexts';
-import getConfig from 'next/config'
-import path from 'path'
 
 export default function Home({ coverMovie, popularList, initialMyMovies, placeholderImage }) {
   const getMovieCoverPath = (fileName) => `${process.env.NEXT_PUBLIC_TMDB_IMAGE_HOST_URL}/t/p/original${fileName}`;
