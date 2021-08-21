@@ -11,7 +11,8 @@ export const getFileContent = (file) => {
     reader.onload = async (e) => {
       resolve(e.target.result);
     }
-    reader.readAsText(file);
+    
+    reader.readAsBinaryString(file);
   })
 }
 
@@ -19,7 +20,7 @@ export const uploadToBucket = ({ filename, fileContent, type }) => {
   const params = {
     Bucket: process.env.NEXT_PUBLIC_AWS_BUCKET_NAME,
     Key: filename,
-    Body: fileContent,
+    Body: Buffer.from(fileContent, 'binary'),
     ContentType: type
   }
 
