@@ -45,6 +45,10 @@ $darkblue: rgb(50,50,60);
     transform-origin: 50% 50%;
     transform: scale(1) translate(0, -74px);
   }
+
+  &:active {
+    transform: scale(1.02);
+  }
 }
 
 .primary, .terciary {
