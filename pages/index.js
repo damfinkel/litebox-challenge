@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import dynamic from 'next/dynamic'
 import { getPlaiceholder } from "plaiceholder";
 import styles from '../styles/Home.module.scss'
 import Nav from '../components/Nav';
@@ -8,7 +9,7 @@ import Image from 'next/image';
 import Sidebar from '../components/Sidebar';
 import { useState } from 'react';
 import Modal from 'react-modal';
-import AddMovie from '../components/AddMovie';
+const AddMovie = dynamic(() => import('../components/AddMovie'));
 import { getCoverMovie, getMyMovies, getPopularMovies, getLastNElements } from '../api/movies';
 import { HomeContext } from '../contexts';
 
