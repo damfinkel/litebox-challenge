@@ -61,6 +61,10 @@
   display: none;
 }
 
+.submitButton, .homeButton {
+  z-index: 1;
+}
+
 @media screen and (max-width: $mobile-breakpoint) {
   .topBar {
     display: flex;

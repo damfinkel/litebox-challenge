@@ -55,7 +55,7 @@ function AddMovie({ onClose, onFinishUpload }) {
           textIsValid={textIsValid} />
         <div className={styles.formBottomContainer}>
           <div className={cn(styles.buttonSuccessContainer, { [styles.hidden]: requestState !== REQUEST_STATE.success })}>
-            <Button buttonStyle="terciary" onClick={onClose}>Ir a Home</Button>
+            <Button buttonStyle="terciary" className={styles.homeButton} onClick={onClose}>Ir a Home</Button>
           </div>
           <div className={cn(styles.buttonPreRequestContainer, { [styles.hidden]: requestState === REQUEST_STATE.success })}>
             <Button 
