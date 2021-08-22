@@ -111,3 +111,9 @@
     align-self: flex-end;
   }
 }
+
+@media screen and (max-width: $small-mobile-breakpoint) {
+  .addMovieContent {
+    padding: 30px 24px;
+  }
+}
