@@ -26,6 +26,7 @@ function MovieInformation({ movie, showMovieDetail, onToggleMovieDetail, imageUr
         blurDataURL={placeholderImage}
         onError={() => setImageSrc(placeholderImage)}
       />
+      <div className={styles.overlay} />
       <h3 className={styles.movieTitle}>{movie.title}</h3>
       <div className={styles.hoveredInformation}>
         <button type="button" className={styles.playButton}>
